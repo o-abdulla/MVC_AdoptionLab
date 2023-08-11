@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using MVC_AdoptionLab.Models;
 using System.Diagnostics;
 
@@ -16,7 +17,29 @@ namespace MVC_AdoptionLab.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Animal> result = _adoptionDbContext.Animals.ToList();
+            return View(result);
+        }
+
+        public IActionResult Results(int id)
+        {
+            Animal a = _adoptionDbContext.Animals.FirstOrDefault(x => x.Id == id);
+            return View(a);
+        }
+
+        public IActionResult RemoveAnimal(int id)
+        {
+            Animal a = _adoptionDbContext.Animals.FirstOrDefault(x => x.Id == id);
+            _adoptionDbContext.Animals.Remove(a);
+            _adoptionDbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AddAnimal(Animal a)
+        {
+            _adoptionDbContext.Animals.Add(a);
+            _adoptionDbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

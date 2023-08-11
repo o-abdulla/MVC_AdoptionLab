@@ -1,0 +1,27 @@
+﻿@model Animal
+
+
+@{
+    
+    if (Model != null)
+    {
+        <img height="400px" src="@Model.Img">
+        <h1>Item: @Model.Name</h1>
+        <p>@Model.Description</p>
+        <p>Age: @Model.Age</p>
+        <p>@Model.Breed</p>
+    }
+    else
+    {
+        <h1>Animal not found</h1>
+    }
+}
+
+
+
+
+<form asp-method="post" asp-action="RemoveAnimal" asp-route-id="@Model.Id" id="form1">
+    
+    <button type="submit" form="form1" value="Submit">Adopt me!</button>
+    
+</form>
