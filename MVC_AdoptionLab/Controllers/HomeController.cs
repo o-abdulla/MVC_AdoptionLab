@@ -7,6 +7,7 @@ namespace MVC_AdoptionLab.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private AdoptionDbContext _adoptionDbContext = new AdoptionDbContext();
 
         public HomeController(ILogger<HomeController> logger)
         {
