@@ -28,3 +28,21 @@
         }
     }
 }
+
+<br />
+
+<form asp-method="post" asp-action="AddAnimal">
+    <h4>Adding an animal to the shelter?</h4>
+    <p>Please proved a URL image in this field</p>
+    <input type="text" name="Img" />
+    <p>What is his/her name?</p>
+    <input type="text" name="Name" />
+    <p>What kind of description best describes him/her?</p>
+    <input type="text" name="Description" />
+    <p>Breed?</p>
+    <input type="text" name="Breed" />
+    <p>How old is he/she?</p>
+    <input type="number" name="Age" />
+
+    <button type="submit" form="form1" value="Submit">Register</button>
+</form>
